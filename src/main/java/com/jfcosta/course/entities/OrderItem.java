@@ -89,7 +89,7 @@ public class OrderItem implements Serializable{
 		return true;
 	}
 
-	public BigDecimal subTotal() {
-		return price.multiply(BigDecimal.valueOf(quantity));
+	public BigDecimal getSubTotal() {
+		return price.multiply(BigDecimal.valueOf(quantity)).setScale(2);
 	}
 }

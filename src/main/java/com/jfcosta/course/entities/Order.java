@@ -1,6 +1,7 @@
 package com.jfcosta.course.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
@@ -105,4 +106,11 @@ public class Order implements Serializable {
 		return "Order [id=" + id + ", moment=" + moment + ", orderStatus=" + orderStatus + ", client=" + client + "]";
 	}
 
+	public BigDecimal getTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		for (OrderItem orderItem : items) {
+			total = total.add(orderItem.getSubTotal());
+		}
+		return total;
+	}
 }
